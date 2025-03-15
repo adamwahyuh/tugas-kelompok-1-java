@@ -12,42 +12,59 @@ class Tidur{
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+    static String garis="---------------------------------------------";
+    static String garisDua="====================================";
+
     static String[][] anggota = {
             {"Adam Wahyu H", "202359201009"},
             {"Plorentina Fidelis P", "202359201005"},
             {"Nathan Alvino F", "20235920100"}
     };
-
     public static void main(String[] args) {
         while (true) {
-            System.out.print("Selamat Datang di Tugas Kelompok 1 \n===== MENU UTAMA =====\n");
-            System.out.println("1. Permainan Logika (Melarikan diri dari penjara) - Nathan");
-            System.out.println("2. Kalkulator Kelompok 1 - Adam & Ploren");
-            System.out.println("Ketik \"daftar\" untuk keluar.");
+            System.out.println(garisDua);
+            System.out.println("Selamat Datang di Tugas Kelompok 1");
+            System.out.println("============   Menu  ===============");
+            System.out.println("1. Permainan Logika");
+            System.out.println("2. Kalkulator Kelompok 1 ");
+            System.out.println(garis);
+            System.out.println("Ketik \"daftar\" untuk melihat daftar anggota.");
+            System.out.println("Ketik \"info\" untuk link Repo Github.");
             System.out.println("Ketik \"exit\" untuk keluar.");
             System.out.print(": ");
-            String choice = scanner.nextLine();
+            String optIn = scanner.nextLine();
 
-            if (choice.equalsIgnoreCase("exit")) {
+            if (optIn.equalsIgnoreCase("exit")) {
                 System.out.println("Bye!");
+                scanner.close();
                 break;
             }
-            else if (choice.equalsIgnoreCase("daftar")) {
-                System.out.print("Nama Nama Kelompok\n");
+            else if (optIn.equalsIgnoreCase("daftar")) {
+                int no = 1;
+                System.out.println(garis);
+                System.out.print("========== Nama Nama Anggota ============\n");
                 for (int y = 0; y < anggota.length; y -= -1) {
+                    System.out.print(no +". ");
                     for (int z = 0; z < anggota[y].length; z -= -1) {
-                        System.out.print(anggota[y][z] + " ");
+                        System.out.print( anggota[y][z] + " ");
                     }
                     System.out.println();
+                    no++;
                 }
+                Tidur.tidur();
+                continue;
+            } else if (optIn.equalsIgnoreCase("info")) {
+                System.out.println(garis);
+                System.out.print("Tugas sudah saya Upload di: \nhttps://github.com/adamwahyuh/tugas-kelompok-1-java\n");
+                System.out.println(garis);
                 Tidur.tidur();
                 continue;
             }
 
-            if (choice.equals("1") || choice.equalsIgnoreCase("a"))  {
+            if (optIn.equals("1") || optIn.equalsIgnoreCase("a"))  {
                 LogicOperator.main(null);
             }
-            else if (choice.equals("2") || choice.equalsIgnoreCase("b")){
+            else if (optIn.equals("2") || optIn.equalsIgnoreCase("b")){
                 Kalkulator.main(null);
             }
             else {
@@ -97,23 +114,23 @@ class LogicOperator {
 }
 
 class Kalkulator {
-    static int tambah(int a, int b) {
+    static double tambah(double a, double b) {
         return a + b;
     }
 
-    static int kurang(int a, int b) {
+    static double kurang(double a, double b) {
         return a - b;
     }
 
-    static int kali(int a, int b) {
+    static double kali(double a, double b) {
         return a * b;
     }
 
-    static int bagi(int a, int b) {
+    static double bagi(double a, double b) {
         return a / b;
     }
 
-    static int modulus(int a, int b) {
+    static double modulus(double a, double b) {
         return a % b;
     }
 
@@ -124,14 +141,15 @@ class Kalkulator {
         String[] pilihan = {"1", "2", "3", "4", "5", "a", "b", "c", "d", "e", "A", "B", "C", "D", "E"};
 
         while (true) {
-            System.out.print("Selamat datang di Kalkulator Kelompok 1\nApa yang ingin kamu lakukan: \n1. +\n2. -\n3.*\n4. /\n5. %\nKetik \"exit\" untuk exit\nKetik \"daftar\" untuk melihat daftar anggota\n: ");
+            System.out.print("Selamat datang di Kalkulator Kelompok 1\nApa yang ingin kamu lakukan: \n1. +\n2. -\n3.*\n4. /\n5. %\nKetik \"exit\" untuk exit\n: ");
             String optIn = opt.nextLine();
 
             if (optIn.equalsIgnoreCase("exit")) {
-                System.out.print("Bye!");
+                System.out.println("Kembali ke main menu...");
+                Tidur.tidur();
                 break;
             }
-            int a, b, result;
+            double a, b, result;
 
             if (!Arrays.asList(pilihan).contains(optIn)) {
                 System.out.println("Tidak ada Pilihannya!");
@@ -141,8 +159,8 @@ class Kalkulator {
 
             while (true) {
                 System.out.print("Angka Pertama : ");
-                if (opt.hasNextInt()) {
-                    a = opt.nextInt();
+                if (opt.hasNextDouble()) {
+                    a = opt.nextDouble();
                     opt.nextLine();
                     break;
                 } else {
@@ -152,8 +170,8 @@ class Kalkulator {
             }
             while (true) {
                 System.out.print("Angka Kedua : ");
-                if (opt.hasNextInt()) {
-                    b = opt.nextInt();
+                if (opt.hasNextDouble()) {
+                    b = opt.nextDouble();
                     opt.nextLine();
                     break;
                 } else {

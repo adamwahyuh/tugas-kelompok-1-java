@@ -26,7 +26,8 @@ public class Main {
             System.out.println("Selamat Datang di Tugas Kelompok 1");
             System.out.println("============   Menu  ===============");
             System.out.println("1. Permainan Logika");
-            System.out.println("2. Kalkulator Kelompok 1 ");
+            System.out.println("2. Kalkulator Sederhana ");
+            System.out.println("3. Casting Varible ");
             System.out.println(garis);
             System.out.println("Ketik \"daftar\" untuk melihat daftar anggota.");
             System.out.println("Ketik \"info\" untuk link Repo Github.");
@@ -66,6 +67,8 @@ public class Main {
             }
             else if (optIn.equals("2") || optIn.equalsIgnoreCase("b")){
                 Kalkulator.main(null);
+            }else if (optIn.equals("3") || optIn.equalsIgnoreCase("c")){
+                CastingVariable.main(null);
             }
             else {
                 System.out.println("Ngarang aja, itu ada di menu pilih!");
@@ -209,6 +212,87 @@ class Kalkulator {
 
             System.out.println("Jawabannya : " + result);
             Tidur.tidur();
+        }
+    }
+}
+class CastingVariable {
+    static Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("\nCasting variable Double ke Integer");
+            System.out.println("Apa yang ingin kamu lakukan?");
+            System.out.println("1. Bilangan Pecahan ke Bilangan Bulat");
+            System.out.println("2. Bilangan Bulat ke Bilangan Pecahan");
+            System.out.println(Main.garis);
+            System.out.println("Ketik \"exit\" untuk keluar");
+            System.out.print(": ");
+
+            String pilihan = scan.nextLine().trim();
+
+            if (pilihan.equalsIgnoreCase("exit")) {
+                System.out.println("Kembali ke main menu...");
+                Tidur.tidur();
+                return;
+            }
+
+            if (pilihan.equals("1")) {
+                doubleToInteger();
+            } else if (pilihan.equals("2")) {
+                integerToDouble();
+            } else {
+                System.out.println("Pilihan tidak ada");
+            }
+        }
+    }
+
+    static public void doubleToInteger() {
+        while (true) {
+            System.out.print("Masukkan bilangan pecahan Anda \nketik \"exit\" untuk keluar\n> ");
+            String input = scan.next();
+            scan.nextLine();
+
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Kembali ke menu...");
+                Tidur.tidur();
+                return;
+            }
+
+            try {
+                // dari string convert ke double
+                double bilanganPecahan = Double.parseDouble(input);
+                // dari doble convert ke int
+                int bilanganBulat = (int) bilanganPecahan;
+                System.out.println("Angka anda menjadi: " + bilanganBulat);
+                Tidur.tidur();
+                continue;
+            } catch (NumberFormatException e) {
+                System.out.println("Input yang anda masukan salah!");
+            }
+        }
+    }
+
+    static public void integerToDouble() {
+        while (true) {
+            System.out.print("Masukkan bilangan Bulat Anda \nketik \"exit\" untuk keluar\n> ");
+            String input = scan.next();
+            scan.nextLine();
+
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Kembali ke menu...");
+                Tidur.tidur();
+                return;
+            }
+
+            try {
+                int bilanganBulat = Integer.parseInt(input);
+                double bilanganPecahan = (double) bilanganBulat;
+                System.out.println("Angka anda menjadi: " + bilanganPecahan);
+                Tidur.tidur();
+                continue;
+            } catch (NumberFormatException e) {
+                System.out.println("Input yang anda masukan salah!");
+            }
         }
     }
 }

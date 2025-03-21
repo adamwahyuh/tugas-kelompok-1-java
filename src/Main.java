@@ -86,7 +86,9 @@ class LogicOperator {
             System.out.println("🏰 Kamu terjebak di dalam penjara bawah tanah!");
             System.out.println("Kamu hanya bisa membawa **dua** barang untuk membantumu melarikan diri.");
             System.out.println("Pilih dengan bijak!");
-
+            System.out.println("\nApakah anda ingin lanjut ?");
+            System.out.print("Type exit untuk keluar dan type apa saja untuk lanjut : ");
+            String exi = scanner.nextLine().trim().toLowerCase();
             System.out.println("\nBarang yang tersedia: tali, obor, kunci, pembuka kunci, emas");
             System.out.print("Pilih barang pertama: ");
             String item1 = scanner.nextLine().trim().toLowerCase();
@@ -94,7 +96,11 @@ class LogicOperator {
             System.out.print("Pilih barang kedua: ");
             String item2 = scanner.nextLine().trim().toLowerCase();
 
-            if (item1.equalsIgnoreCase("exit") || item2.equalsIgnoreCase("exit")){
+            if (exi.equalsIgnoreCase("exit")){
+                System.out.println("Kembali ke Main Menu...");
+                Tidur.tidur();
+                break;
+            } else{
                 boolean punyaTali = item1.equals("tali") || item2.equals("tali");
                 boolean punyaObor = item1.equals("obor") || item2.equals("obor");
                 boolean punyaKunci = item1.equals("kunci") || item2.equals("kunci");

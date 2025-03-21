@@ -80,38 +80,44 @@ public class Main {
 
 class LogicOperator {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        while (true){
+            Scanner scanner = new Scanner(System.in);
 
-        System.out.println("🏰 Kamu terjebak di dalam penjara bawah tanah!");
-        System.out.println("Kamu hanya bisa membawa **dua** barang untuk membantumu melarikan diri.");
-        System.out.println("Pilih dengan bijak!");
+            System.out.println("🏰 Kamu terjebak di dalam penjara bawah tanah!");
+            System.out.println("Kamu hanya bisa membawa **dua** barang untuk membantumu melarikan diri.");
+            System.out.println("Pilih dengan bijak!");
 
-        System.out.println("\nBarang yang tersedia: tali, obor, kunci, pembuka kunci, emas");
-        System.out.print("Pilih barang pertama: ");
-        String item1 = scanner.nextLine().trim().toLowerCase();
+            System.out.println("\nBarang yang tersedia: tali, obor, kunci, pembuka kunci, emas");
+            System.out.print("Pilih barang pertama: ");
+            String item1 = scanner.nextLine().trim().toLowerCase();
 
-        System.out.print("Pilih barang kedua: ");
-        String item2 = scanner.nextLine().trim().toLowerCase();
+            System.out.print("Pilih barang kedua: ");
+            String item2 = scanner.nextLine().trim().toLowerCase();
 
-        boolean punyaTali = item1.equals("tali") || item2.equals("tali");
-        boolean punyaObor = item1.equals("obor") || item2.equals("obor");
-        boolean punyaKunci = item1.equals("kunci") || item2.equals("kunci");
-        boolean punyaPembukaKunci = item1.equals("pembuka kunci") || item2.equals("pembuka kunci");
-        boolean mengambilEmas = item1.equals("emas") || item2.equals("emas");
+            if (item1.equalsIgnoreCase("exit") || item2.equalsIgnoreCase("exit")){
+                boolean punyaTali = item1.equals("tali") || item2.equals("tali");
+                boolean punyaObor = item1.equals("obor") || item2.equals("obor");
+                boolean punyaKunci = item1.equals("kunci") || item2.equals("kunci");
+                boolean punyaPembukaKunci = item1.equals("pembuka kunci") || item2.equals("pembuka kunci");
+                boolean mengambilEmas = item1.equals("emas") || item2.equals("emas");
 
-        boolean bisaKabur = (punyaTali && punyaObor) || (punyaKunci || punyaPembukaKunci);
-        boolean gagalKabur = !bisaKabur || mengambilEmas;
+                boolean bisaKabur = (punyaTali && punyaObor) || (punyaKunci || punyaPembukaKunci);
+                boolean gagalKabur = !bisaKabur || mengambilEmas;
 
-        System.out.println("\n🔎 Menilai pilihanmu...");
+                System.out.println("\n🔎 Menilai pilihanmu...");
 
-        if (gagalKabur) {
-            if (mengambilEmas) {
-                System.out.println("💰 Emas itu adalah jebakan! Para penjaga menangkapmu. Kamu kalah.");
-            } else {
-                System.out.println("🚪 Pilihanmu tidak cukup untuk melarikan diri. Kamu tetap terjebak!");
+                if (gagalKabur) {
+                    if (mengambilEmas) {
+                        System.out.println("💰 Emas itu adalah jebakan! Para penjaga menangkapmu. Kamu kalah.");
+                    } else {
+                        System.out.println("🚪 Pilihanmu tidak cukup untuk melarikan diri. Kamu tetap terjebak!");
+                    }
+                } else {
+                    System.out.println("✨ Selamat! Kamu berhasil melarikan diri dari penjara bawah tanah.");
+                }
             }
-        } else {
-            System.out.println("✨ Selamat! Kamu berhasil melarikan diri dari penjara bawah tanah.");
+
+
         }
     }
 }
